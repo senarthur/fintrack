@@ -2,6 +2,10 @@
 
 Um sistema Full-Stack para gerenciamento de finanças pessoais, desenvolvido com foco em boas práticas de engenharia de software, arquitetura moderna e experiência do usuário. 
 
+![home-page](./public/assets/Home%20Page.png)
+![details-page](./public/assets/Details%20Page.png)
+![form-page](./public/assets/Form%20Page.png)
+
 ## Tecnologias Utilizadas
 
 **Front-end:**
