@@ -1,0 +1,39 @@
+@use '@angular/material' as mat;
+
+.container {
+    padding: 20px;
+
+    .container-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+
+        h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        button {
+            color: #A4A4A4;
+            outline: none;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+    }
+
+    .form {
+        margin: 40px auto;
+
+        @include mat.stepper-overrides((container-color: #0F0F1E,
+                header-selected-state-label-text-color: #fff,
+                header-selected-state-icon-background-color: #6034A6,
+            ));
+
+        @include mat.fab-overrides((container-color: #6034A6,
+                foreground-color: #fff,
+                extended-label-text-weight: 500,
+            ));
+    }
+}

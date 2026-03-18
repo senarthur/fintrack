@@ -1,0 +1,73 @@
+<section class="container">
+    <div class="container-title">
+        <mat-icon fontIcon="arrow_back" (click)="goBack()"></mat-icon>
+        <h2>Adicionar Nova Transação</h2>
+    </div>
+
+    <div class="form">
+        <mat-stepper orientation="vertical" [linear]="false" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Digite o valor da Transação</ng-template>
+                    <mat-form-field>
+                        <mat-label>Valor</mat-label>
+                        <input matInput type="number" placeholder="1500.00" formControlName="firstCtrl" required>
+                    </mat-form-field>
+                    <div>
+                        <button matButton matStepperNext>Próximo</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Adicione o título</ng-template>
+                    <mat-form-field>
+                        <mat-label>Título da Transação</mat-label>
+                        <input matInput formControlName="secondCtrl" placeholder="Market" required>
+                    </mat-form-field>
+                    <div>
+                        <button matButton matStepperPrevious>Voltar</button>
+                        <button matButton matStepperNext>Próximo</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="thirdFormGroup">
+                <form [formGroup]="thirdFormGroup">
+                    <ng-template matStepLabel>Adicione a descrição</ng-template>
+                    <mat-form-field>
+                        <mat-label>Descrição</mat-label>
+                        <input matInput formControlName="thirdCtrl" placeholder="Grocery Shopping" required>
+                    </mat-form-field>
+                    <div>
+                        <button matButton matStepperPrevious>Voltar</button>
+                        <button matButton matStepperNext>Próximo</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="fourthFormGroup">
+                <form [formGroup]="fourthFormGroup">
+                    <ng-template matStepLabel>Tipo da Transação</ng-template>
+                    <mat-form-field>
+                        <mat-label>Tipo</mat-label>
+                        <mat-select formControlName="fourthCtrl">
+                            <mat-option value="EXPENSE">Despesa</mat-option>
+                            <mat-option value="REVENUE">Receita</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <button matButton matStepperPrevious>Voltar</button>
+                        <button matButton matStepperNext>Próximo</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Enviar</ng-template>
+                <p>Seu formulário está pronto!</p>
+                <div>
+                    <button matButton matStepperPrevious>Voltar</button>
+                    <button matButton (click)="onSubmit(stepper)">Enviar</button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </div>
+</section>
