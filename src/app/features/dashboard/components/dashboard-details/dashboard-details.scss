@@ -1,0 +1,160 @@
+@use '@angular/material' as mat;
+
+.container {
+    padding: 20px;
+
+    .container-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        button {
+            color: #A4A4A4;
+            outline: none;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+    }
+
+    .amount-overview {
+        background-color: #0F0F1E;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+
+        h2 {
+            font-size: 1rem;
+            color: #A4A4A4;
+        }
+
+        span {
+            font-size: 2.3rem;
+            font-weight: bold;
+        }
+
+        input {
+            font-size: 2.3rem;
+            font-weight: bold;
+            field-sizing: content;
+            text-align: center;
+            background: transparent;
+            border: none;
+            color: #fff;
+            outline: none;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+
+        button {
+            color: #A4A4A4;
+            margin-top: 5px;
+            outline: none;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+    }
+
+    .details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #151524;
+        padding: 40px;
+        border-radius: 30px 30px 0 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 50px;
+
+            .icon {
+                width: 60px;
+                height: 60px;
+                background-color: #6034A6;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                p {
+                    color: #fff;
+                    font-weight: bold;
+                    margin: 0;
+                    font-size: 1.5rem;
+                }
+            }
+
+            .title {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                h3 {
+                    margin: 0;
+                    font-size: 1.6rem;
+                }
+
+                input {
+                    color: #fff;
+                    font-weight: bold;
+                    margin: 0;
+                    padding: 5px 10px;
+                    font-size: 1.5rem;
+                    width: 100%;
+                    max-width: 200px;
+                    background: #272742;
+                    border: none;
+                    outline: none;
+                    text-align: center;
+
+                    &:disabled {
+                        background: transparent;
+                    }
+                }
+
+                input.description {
+                    font-size: 1rem;
+                    color: #A4A4A4;
+                }
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+
+            @include mat.fab-overrides((container-color: #6034A6,
+                    foreground-color: #fff,
+                    extended-label-text-weight: 500,
+                ));
+        }
+    }
+}
