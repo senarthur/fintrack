@@ -1,0 +1,38 @@
+header {
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        margin: 0.2rem;
+        font-size: 1.5rem;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5px;
+        padding: 0.3rem 1rem;
+        border-radius: 30px;
+        border: none;
+        background: #22223d;
+        color: #fff;
+        cursor: pointer;
+        
+        transition: all ease 0.5s;
+
+        span {
+            display: none;
+        }
+
+        &:hover {
+            span {
+                display: block;
+            }
+        }
+    }
+}
