@@ -158,3 +158,12 @@
         }
     }
 }
+
+@media screen and (max-height: 768px) {
+    .container {
+        .details {
+            position: initial;
+        }
+    }
+    
+}

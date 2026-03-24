@@ -1,7 +1,11 @@
 <header>
-    <h1>FinTrack</h1>
     <button (click)="navigateToAddTransaction()">
         <mat-icon fontIcon="add"></mat-icon>
         <span>Adicionar Transação</span>
+    </button>
+    <p>Olá {{ user_name }}</p>
+    <button (click)="logout()">
+        <mat-icon fontIcon="person"></mat-icon>
+        <span>Sair</span>
     </button>
 </header>

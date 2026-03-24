@@ -46,7 +46,7 @@ export class DashboardAddForm {
   });
 
   goBack() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   onSubmit(stepper: MatStepperModule) {
@@ -68,7 +68,7 @@ export class DashboardAddForm {
     this.transactionService.createTransaction(newTransaction as any).subscribe({
       next: (response) => {
         console.log('Transação salva com sucesso', response);
-        this.router.navigate(['/']); 
+        this.goBack(); 
       },
       error: (error) => {
         console.error('Erro ao salvar transação', error);

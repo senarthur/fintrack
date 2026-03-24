@@ -11,12 +11,17 @@ header {
         font-family: Arial, Helvetica, sans-serif;
     }
 
+    p {
+        color: #A4A4A4;
+        font-size: 1rem;
+    }
+
     button {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 5px;
-        padding: 0.3rem 1rem;
+        padding: 0.3rem 0.6rem;
         border-radius: 30px;
         border: none;
         background: #22223d;

@@ -1,3 +1,4 @@
+<app-header></app-header>
 <section class="container">
     <div class="amount-overview">
         <h2>Balanço Total</h2>
@@ -6,11 +7,10 @@
 
     <div class="categories">
         <h3>Categorias</h3>
-        <mat-chip-set aria-label="Transaction Type" class="transaction-type">
-            <mat-chip (click)="setFilter('ALL')">Tudo</mat-chip>
-            <mat-chip (click)="setFilter('REVENUES')">Receitas</mat-chip>
-            <mat-chip (click)="setFilter('EXPENSES')">Despesas</mat-chip>
-        </mat-chip-set>
+        <mat-chip-listbox aria-label="Transaction Type" class="transaction-type" [value]="activeFilter()" (change)="setFilter($event.value)">
+            <mat-chip-option value="REVENUES">Receitas</mat-chip-option>
+            <mat-chip-option value="EXPENSES">Despesas</mat-chip-option>
+        </mat-chip-listbox>
     </div>
 
     @if (displayedTransactions().length > 0) {
@@ -34,6 +34,6 @@
         }
     </div>
     } @else {
-        <p class="text-center">Ainda não há transações registradas.</p>
+    <p class="text-center">Ainda não há transações registradas.</p>
     }
 </section>

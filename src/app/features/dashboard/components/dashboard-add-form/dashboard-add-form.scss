@@ -26,6 +26,19 @@
     .form {
         margin: 40px auto;
 
+        input.amount {
+            text-align: right;
+        }
+
+        span {
+            color: #0F0F1E;
+        }
+        
+        input.amount::-webkit-outer-spin-button,
+        input.amount::-webkit-inner-spin-button {
+            display: none;
+        }
+
         @include mat.stepper-overrides((container-color: #0F0F1E,
                 header-selected-state-label-text-color: #fff,
                 header-selected-state-icon-background-color: #6034A6,

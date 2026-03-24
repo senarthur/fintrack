@@ -1,61 +1,48 @@
+<app-header></app-header>
 @if (transaction(); as t) {
-    <section class="container">
-        <div class="container-title">
-            <mat-icon fontIcon="arrow_back" (click)="goBack()"></mat-icon>
-            <h2>Detalhe</h2>
-        </div>
-        <div class="amount-overview">
-            <h2>Valor Atual</h2>
-            <span [hidden]="!amountDisabled()">{{ t.amount | currency: 'BRL' }}</span>
-            <div class="edit-amount">
-                <span [hidden]="amountDisabled()">R$ </span>
-                <input
-                    #amountInput
-                    type="number"
-                    [disabled]="amountDisabled()"
-                    [value]="t.amount"
-                    [hidden]="amountDisabled()"
-                />
-            </div>
-            <button (click)="editAmount(amountInput.value)" >{{ amountButton() }}</button>
-        </div>
-
-        <div class="details">
-            <div class="card">
-                <div class="icon">
-                    <p>{{ t.title.charAt(0) }}</p>
-                </div>
-                <div class="title">
-                    <input 
-                        #titleInput
-                        type="text"
-                        [value]="t.title" 
-                        [disabled]="titleDisabled()" 
-                    />
-                    <input 
-                        #descriptionInput
-                        [disabled]="descriptionDisabled()" 
-                        class="description" 
-                        [value]="t.description" 
-                    />
-                </div>
-            </div>
-
-            <div class="buttons">
-                <button matFab extended (click)="toggleTitleEdit(titleInput.value)">
-                    {{ textTitleButton() }}
-                </button>
-                <button matFab extended (click)="toggleDescriptionEdit(descriptionInput.value)">
-                    {{ descriptionButton() }}
-                </button>
-                <button matFab extended (click)="deleteTransaction()">
-                    Deletar
-                </button>
-            </div>
-        </div>
-    </section>
-} @else {
-    <div class="loading">
-        <p>Carregando dados...</p>
+<section class="container">
+    <div class="container-title">
+        <mat-icon fontIcon="arrow_back" (click)="goBack()"></mat-icon>
+        <h2>Detalhe</h2>
     </div>
+    <div class="amount-overview">
+        <h2>Valor Atual</h2>
+        <span [hidden]="!amountDisabled()">{{ t.amount | currency: 'BRL' }}</span>
+        <div class="edit-amount">
+            <span [hidden]="amountDisabled()">R$ </span>
+            <input #amountInput type="number" [disabled]="amountDisabled()" [value]="t.amount"
+                [hidden]="amountDisabled()" />
+        </div>
+        <button (click)="editAmount(amountInput.value)">{{ amountButton() }}</button>
+    </div>
+
+    <div class="details">
+        <div class="card">
+            <div class="icon">
+                <p>{{ t.title.charAt(0) }}</p>
+            </div>
+            <div class="title">
+                <input #titleInput type="text" [value]="t.title" [disabled]="titleDisabled()" />
+                <input #descriptionInput [disabled]="descriptionDisabled()" class="description"
+                    [value]="t.description" />
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button matFab extended (click)="toggleTitleEdit(titleInput.value)">
+                {{ textTitleButton() }}
+            </button>
+            <button matFab extended (click)="toggleDescriptionEdit(descriptionInput.value)">
+                {{ descriptionButton() }}
+            </button>
+            <button matFab extended (click)="deleteTransaction()">
+                Deletar
+            </button>
+        </div>
+    </div>
+</section>
+} @else {
+<div class="loading">
+    <p>Carregando dados...</p>
+</div>
 }

@@ -4,10 +4,11 @@ import { TransactionService } from '../../../transactions/services/transaction-s
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from "@angular/router";
 import { CurrencyPipe } from '@angular/common';
+import { Header } from '../../../../core/layout/header/header';
 
 @Component({
   selector: 'app-dashboard-home',
-  imports: [MatChipsModule, RouterLink, CurrencyPipe],
+  imports: [MatChipsModule, RouterLink, CurrencyPipe, Header],
   templateUrl: './dashboard-home.html',
   styleUrl: './dashboard-home.scss',
 })
@@ -30,7 +31,8 @@ export class DashboardHome {
     return transactions;
   });
 
-  setFilter(filter: 'ALL' | 'REVENUES' | 'EXPENSES') {
-    this.activeFilter.set(filter);
+  setFilter(filter: 'ALL' | 'REVENUES' | 'EXPENSES' | undefined) {
+    const newFilter = filter || 'ALL';
+    this.activeFilter.set(newFilter);
   }
 }

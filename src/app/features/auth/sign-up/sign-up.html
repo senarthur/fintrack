@@ -1,0 +1,28 @@
+<section class="loginForm">
+    <h1>Cadastre-se</h1>
+    <p>Entre com seus dados para criar uma conta</p>
+
+    <form [formGroup]="signUpForm">
+        <mat-form-field class="input-group">
+            <mat-label>Nome</mat-label>
+            <input formControlName="name" matInput autocomplete="name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <input formControlName="email" matInput autocomplete="e-mail">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input type="password" formControlName="password" matInput autocomplete="current-password">
+        </mat-form-field>
+         <mat-form-field>
+            <mat-label>Confirmar Senha</mat-label>
+            <input type="password" formControlName="confirmPassword" matInput autocomplete="current-password">
+        </mat-form-field>
+        <div class="buttons">
+            <button class="sign-up" matFab extended (click)="onSubmit()">
+                Cadastrar
+            </button>
+        </div>
+    </form>
+</section>

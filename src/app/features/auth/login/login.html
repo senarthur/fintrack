@@ -1,0 +1,27 @@
+<section class="loginForm">
+    <h1>Login</h1>
+    <p>Entre com sua conta pré-cadastrada</p>
+
+    <form [formGroup]="loginForm">
+        <mat-form-field class="input-group">
+            <mat-label>Login</mat-label>
+            <input formControlName="email" matInput autocomplete="e-mail">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input formControlName="password" matInput [type]="hide() ? 'password' : 'text'">
+            <button matIconButton matSuffix (click)="togglePassword($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <div class="buttons">
+            <button matFab extended (click)="onSubmit()">
+                Login
+            </button>
+            <button class="sign-up" matFab extended (click)="onSignUp()">
+                Cadastre-se
+            </button>
+        </div>
+    </form>
+</section>

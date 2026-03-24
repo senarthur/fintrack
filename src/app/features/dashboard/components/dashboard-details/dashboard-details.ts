@@ -5,10 +5,11 @@ import { TransactionService } from '../../../transactions/services/transaction-s
 import { ActivatedRoute, Router } from '@angular/router';
 import { ITransactions } from '../../../transactions/models/ITransactions';
 import { CurrencyPipe } from '@angular/common';
+import { Header } from '../../../../core/layout/header/header';
 
 @Component({
   selector: 'app-dashboard-details',
-  imports: [MatButtonModule, MatIconModule, CurrencyPipe],
+  imports: [MatButtonModule, MatIconModule, CurrencyPipe, Header],
   templateUrl: './dashboard-details.html',
   styleUrl: './dashboard-details.scss',
 })
@@ -39,7 +40,7 @@ export class DashboardDetails implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   setTitle(title: string) {

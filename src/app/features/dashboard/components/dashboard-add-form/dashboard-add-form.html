@@ -9,9 +9,10 @@
             <mat-step [stepControl]="firstFormGroup">
                 <form [formGroup]="firstFormGroup">
                     <ng-template matStepLabel>Digite o valor da Transação</ng-template>
-                    <mat-form-field>
+                    <mat-form-field floatLabel="always">
                         <mat-label>Valor</mat-label>
-                        <input matInput type="number" placeholder="1500.00" formControlName="firstCtrl" required>
+                        <input class="amount" matInput type="number" placeholder="100.00" formControlName="firstCtrl" required>
+                        <span matTextPrefix>R$&nbsp;</span>
                     </mat-form-field>
                     <div>
                         <button matButton matStepperNext>Próximo</button>

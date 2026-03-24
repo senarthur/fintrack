@@ -5,4 +5,5 @@ export interface ITransactions {
     amount: number;
     date: Date;
     transactionType: string;
+    createdAt: Date
 }

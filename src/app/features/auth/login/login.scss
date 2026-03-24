@@ -1,0 +1,62 @@
+@use '@angular/material' as mat;
+
+.loginForm {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+
+    h1 {
+        margin-bottom: 5px;
+        font-size: 2rem;
+    }
+
+    p {
+        margin-bottom: 30px;
+        color: #A4A4A4;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .input-group {
+            border-radius: 10px;
+
+            .teste {
+                display: none;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            button {
+                border-radius: 10px;
+
+                @include mat.fab-overrides((container-color: #6034A6,
+                        foreground-color: #fff,
+                        extended-label-text-weight: 500,
+                    ));
+
+            }
+
+            .sign-up {
+                @include mat.fab-overrides((container-color: transparent,
+                        foreground-color: #fff,
+                        extended-label-text-weight: 500,
+                        small-container-color: #6034A6,
+                    ));
+            }
+        }
+    }
+}
