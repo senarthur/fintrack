@@ -34,7 +34,6 @@ export class DashboardDetails implements OnInit {
       if (id) {
         this.transactionService.getTransactionById(id).subscribe({
           next: (data) => this.transaction.set(data),
-          error: (err) => console.error('Error fetching transaction:', err)
         })
       }
   }
@@ -54,7 +53,6 @@ export class DashboardDetails implements OnInit {
     const currentTransaction = this.transaction();
 
     if(!currentTransaction || !currentTransaction.id) {
-      console.error('Error: Transação não carregada ou sem ID');
       return;
     }
 
@@ -123,7 +121,6 @@ export class DashboardDetails implements OnInit {
     const amountNumber = Number(newAmount.replace(/[^0-9.-]+/g,""));
     console.log(newAmount);
     const updatedTransation = {...currentTransaction, amount: amountNumber};
-    console.log("Valor atualizado: ", updatedTransation);
 
     this.transactionService.updateTransaction(currentTransaction.id, updatedTransation).subscribe({
       next: (savedData) => {
@@ -148,10 +145,9 @@ export class DashboardDetails implements OnInit {
     this.transactionService.deleteTransaction(currentTransaction.id).subscribe({
       next: () => {
         this.router.navigate(['/']);
-        console.log("Transação deletada com sucesso");
       },
       error: (err) => {
-        console.log("Erro ao deletar a transação: ", err)
+        console.error("Erro ao deletar a transação: ", err)
       }
     })
   }

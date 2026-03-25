@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth-service';
 import { LoginRequest } from '../../../core/model/auth.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class Login implements OnInit {
   private _formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private authService = inject(AuthService)
+  private snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     localStorage.removeItem('token');
@@ -49,7 +51,9 @@ export class Login implements OnInit {
 
   onSubmit() {
     if (this.loginForm.invalid) {
-      console.log('Formulário inválido');
+      this.snackBar.open("Verifique os dados e tente novamente", "", {
+        duration: 2000
+      })
       return;
     }
 
@@ -59,8 +63,9 @@ export class Login implements OnInit {
     }
 
     this.authService.login(data).subscribe({
-      next: () => console.log('Logado'),
-      error: () => console.log('Inválido', this.loginForm.value)
+      error: (err) => this.snackBar.open(err.error.message, "", {
+        duration: 2000
+      })
     })
   }
 

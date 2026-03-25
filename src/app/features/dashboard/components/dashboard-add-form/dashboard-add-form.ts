@@ -66,12 +66,10 @@ export class DashboardAddForm {
     };
 
     this.transactionService.createTransaction(newTransaction as any).subscribe({
-      next: (response) => {
-        console.log('Transação salva com sucesso', response);
-        this.goBack(); 
-      },
-      error: (error) => {
-        console.error('Erro ao salvar transação', error);
+      error: () => {
+        this._snackBar.open("Erro ao salvar a transação, tente novamente", "", {
+          duration: 2000
+        })
       }
     });
   }
