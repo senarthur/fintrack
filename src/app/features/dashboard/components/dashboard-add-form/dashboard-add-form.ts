@@ -66,6 +66,9 @@ export class DashboardAddForm {
     };
 
     this.transactionService.createTransaction(newTransaction as any).subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      },
       error: () => {
         this._snackBar.open("Erro ao salvar a transação, tente novamente", "", {
           duration: 2000

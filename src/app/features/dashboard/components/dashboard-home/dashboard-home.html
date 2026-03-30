@@ -7,15 +7,21 @@
 
     <div class="categories">
         <h3>Categorias</h3>
-        <mat-chip-listbox aria-label="Transaction Type" class="transaction-type" [value]="activeFilter()" (change)="setFilter($event.value)">
+        <mat-chip-listbox aria-label="Transaction Type" class="transaction-type" [value]="activeFilter()"
+            (change)="setFilter($event.value)">
             <mat-chip-option value="REVENUES">Receitas</mat-chip-option>
             <mat-chip-option value="EXPENSES">Despesas</mat-chip-option>
         </mat-chip-listbox>
     </div>
 
-    @if (displayedTransactions().length > 0) {
+    @if (groupedTransactions().length > 0) {
     <div class="history">
-        @for (transaction of displayedTransactions(); track $index) {
+        @for (group of groupedTransactions(); track group.date) {
+        <div class="date-group-header">
+            <span class="label">{{ group.label }}</span>
+        </div>
+
+        @for (transaction of group.transactions; track $index) {
         <div class="title-container" routerLink="/details/{{transaction.id}}">
             <div class="card">
                 <div class="icon">
@@ -32,8 +38,10 @@
             </span>
         </div>
         }
+
+        }
     </div>
     } @else {
-    <p class="text-center">Ainda não há transações registradas.</p>
+        <p class="text-center">Ainda não há transações registradas.</p>
     }
 </section>

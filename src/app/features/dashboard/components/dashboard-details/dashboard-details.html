@@ -39,6 +39,7 @@
                 Deletar
             </button>
         </div>
+        <p>Transação criada em: {{ t.createdAt | date: 'dd/MM/yyyy' }}</p>
     </div>
 </section>
 } @else {

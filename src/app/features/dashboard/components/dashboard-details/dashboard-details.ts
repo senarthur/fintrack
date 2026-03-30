@@ -4,12 +4,12 @@ import {MatIconModule} from '@angular/material/icon';
 import { TransactionService } from '../../../transactions/services/transaction-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ITransactions } from '../../../transactions/models/ITransactions';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Header } from '../../../../core/layout/header/header';
 
 @Component({
   selector: 'app-dashboard-details',
-  imports: [MatButtonModule, MatIconModule, CurrencyPipe, Header],
+  imports: [MatButtonModule, MatIconModule, CurrencyPipe, DatePipe, Header],
   templateUrl: './dashboard-details.html',
   styleUrl: './dashboard-details.scss',
 })

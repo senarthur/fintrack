@@ -3,7 +3,6 @@ export interface ITransactions {
     title: string;
     description: string;
     amount: number;
-    date: Date;
     transactionType: string;
-    createdAt: Date
+    createdAt: string
 }
