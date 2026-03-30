@@ -10,7 +10,7 @@ import { tap } from 'rxjs';
 export class AuthService {
   private readonly http = inject(HttpClient);
   private router = inject(Router);
-  private readonly API_URL = 'http://localhost:8080/api/auth';
+  private readonly API_URL = 'https://fintrack-z5n9.onrender.com/api/auth';
 
   login(data: LoginRequest) {
     return this.http.post<LoginResponse>(`${this.API_URL}/login`, data).pipe(

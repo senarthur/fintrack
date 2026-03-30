@@ -8,7 +8,7 @@ import { IPageTransactionResponse, ITransactions } from '../models/ITransactions
 export class TransactionService {
 
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8080/api/transactions';
+  private apiUrl = 'https://fintrack-z5n9.onrender.com/api/transactions';
 
   getAllTransactions(page: number = 0, size: number = 10) {
     return this.http.get<IPageTransactionResponse>(`${this.apiUrl}?page=${page}&size=${size}`);
