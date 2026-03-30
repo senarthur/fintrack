@@ -144,7 +144,7 @@ export class DashboardDetails implements OnInit {
 
     this.transactionService.deleteTransaction(currentTransaction.id).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         console.error("Erro ao deletar a transação: ", err)
