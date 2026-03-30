@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ITransactions } from '../models/ITransactions';
+import { IPageTransactionResponse, ITransactions } from '../models/ITransactions';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +10,10 @@ export class TransactionService {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:8080/api/transactions';
 
-  getAllTransactions() {
-    return this.http.get<ITransactions[]>(this.apiUrl);
+  getAllTransactions(page: number = 0, size: number = 10) {
+    return this.http.get<IPageTransactionResponse>(`${this.apiUrl}?page=${page}&size=${size}`);
   }
-
+ 
   getTransactionById(id: string) {
     return this.http.get<ITransactions>(`${this.apiUrl}/${id}`);
   }

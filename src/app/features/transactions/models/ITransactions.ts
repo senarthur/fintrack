@@ -6,3 +6,10 @@ export interface ITransactions {
     transactionType: string;
     createdAt: string
 }
+
+export interface IPageTransactionResponse {
+    transactions: ITransactions[];
+    pageNumber: number;
+    pageSize: number;
+    totalElements: number;
+}

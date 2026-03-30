@@ -3,6 +3,10 @@
 .container {
     padding: 20px;
 
+    @include mat.progress-spinner-overrides((active-indicator-color: #6034A6,
+        ));
+
+
     .amount-overview {
         background-color: #0F0F1E;
         color: #fff;
@@ -44,6 +48,12 @@
 
         &::-webkit-scrollbar {
             width: 8px;
+        }
+
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
         }
 
         .date-group-header {

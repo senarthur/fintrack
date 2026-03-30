@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { TransactionService } from '../../../transactions/services/transaction-service';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -7,22 +7,44 @@ import { CurrencyPipe } from '@angular/common';
 import { Header } from '../../../../core/layout/header/header';
 import { ITransactions } from '../../../transactions/models/ITransactions';
 import { IGroupedTransactions } from '../../../transactions/models/IGroupedTransactions';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-dashboard-home',
-  imports: [MatChipsModule, RouterLink, CurrencyPipe, Header],
+  imports: [MatChipsModule, RouterLink, CurrencyPipe, Header, MatProgressSpinnerModule],
   templateUrl: './dashboard-home.html',
   styleUrl: './dashboard-home.scss',
 })
 
 export class DashboardHome {
   private transactionService = inject(TransactionService);
-  private readonly transactions = toSignal(this.transactionService.getAllTransactions(), { initialValue: [] });
-
+  
+  readonly transactions = signal<ITransactions[]>([]);
+  readonly page = signal(0);
+  readonly totalElements = signal(0);
+  readonly loading = signal(false);
   readonly balance = toSignal(this.transactionService.getBalance(), { initialValue: 0 });
 
   activeFilter = signal<'ALL' | 'REVENUES' | 'EXPENSES'>('ALL');
 
+  constructor() {
+    this.loadTransactions();
+  }
+
+  loadTransactions() {
+    if (this.loading()) return;
+
+    this.loading.set(true);
+    this.transactionService.getAllTransactions(this.page()).subscribe({
+      next: (res) => {
+        this.transactions.update(current => [...current, ...res.transactions]);
+        this.totalElements.set(res.totalElements);
+        this.loading.set(false);
+      },
+      error: () => this.loading.set(false)
+    });
+  }
+  
   displayedTransactions = computed(() => {
     const transactions = this.transactions();
     const filter = this.activeFilter();
@@ -62,6 +84,16 @@ export class DashboardHome {
       return { date: dateKey, label, transactions: list } as IGroupedTransactions;
     })
   })
+
+  onScroll($event: any) {
+    const element = $event.target;
+    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+      if (this.transactions().length < this.totalElements() && !this.loading()) {
+        this.page.update(current => current + 1);
+        this.loadTransactions();
+      }
+    }
+  }
 
   setFilter(filter: 'ALL' | 'REVENUES' | 'EXPENSES' | undefined) {
     const newFilter = filter || 'ALL';
