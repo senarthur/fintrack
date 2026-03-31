@@ -23,21 +23,22 @@
             </div>
             <div class="title">
                 <input #titleInput type="text" [value]="t.title" [disabled]="titleDisabled()" />
-                <input #descriptionInput [disabled]="descriptionDisabled()" class="description"
-                    [value]="t.description" />
+                <textarea #descriptionInput 
+                    matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+                    sdkAutosizeMaxRows="5"
+                    [disabled]="descriptionDisabled()" 
+                    class="description"
+                    [value]="t.description">
+                </textarea>
             </div>
         </div>
 
         <div class="buttons">
-            <button matFab extended (click)="toggleTitleEdit(titleInput.value)">
-                {{ textTitleButton() }}
-            </button>
-            <button matFab extended (click)="toggleDescriptionEdit(descriptionInput.value)">
-                {{ descriptionButton() }}
-            </button>
-            <button matFab extended (click)="deleteTransaction()">
-                Deletar
-            </button>
+            <app-button variant="primary" (onClick)="toggleTitleEdit(titleInput.value)">{{ textTitleButton() }}</app-button>
+            <app-button variant="primary" (onClick)="toggleDescriptionEdit(descriptionInput.value)">{{ descriptionButton() }}</app-button>
+            <app-button variant="primary" (onClick)="deleteTransaction()">Deletar</app-button>
         </div>
         <p>Transação criada em: {{ t.createdAt | date: 'dd/MM/yyyy' }}</p>
     </div>

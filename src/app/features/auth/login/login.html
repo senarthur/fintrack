@@ -16,12 +16,10 @@
             </button>
         </mat-form-field>
         <div class="buttons">
-            <button matFab extended (click)="onSubmit()">
-                Login
-            </button>
-            <button class="sign-up" matFab extended (click)="onSignUp()">
+            <app-button (onClick)="onSubmit()">Login</app-button>
+            <app-button variant="secondary" (onClick)="onSignUp()">
                 Cadastre-se
-            </button>
+            </app-button>
         </div>
     </form>
 </section>

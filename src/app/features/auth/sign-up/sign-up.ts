@@ -10,6 +10,7 @@ import { RegisterRequest } from '../../../core/model/auth.interface';
 import { passwordsMatchValidator } from '../utils/validators.form';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Button } from '../../../shared/components/button/button';
 
 class ConfirmPasswordErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: AbstractControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -28,7 +29,8 @@ class ConfirmPasswordErrorStateMatcher implements ErrorStateMatcher {
     MatButtonModule, 
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Button
   ],
   templateUrl: './sign-up.html',
   styleUrl: './sign-up.scss',
@@ -66,6 +68,12 @@ export class SignUp {
     }
 
     this.authService.register(data).subscribe({
+      next: () => {
+        this.snackBar.open("Cadastro realizado com sucesso! Faça login para continuar.","", {
+          duration: 2000
+        });
+        this.router.navigate(['/login']);
+      },
       error: (err) => {
         this.snackBar.open(err.error.message,"", {
           duration: 2000

@@ -21,9 +21,11 @@
                     <span class="label">{{ group.label }}</span>
                 </div>
 
+                <div class="cards">
                 @for (transaction of group.transactions; track $index) {
-                    <app-card [transaction]="transaction"></app-card>
-                }
+                        <app-card [transaction]="transaction"></app-card>
+                    }
+                </div>
             }
 
             @if(loading()) {

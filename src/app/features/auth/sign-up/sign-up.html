@@ -15,14 +15,11 @@
             <mat-label>Senha</mat-label>
             <input type="password" formControlName="password" matInput autocomplete="current-password">
         </mat-form-field>
-         <mat-form-field>
+        <mat-form-field>
             <mat-label>Confirmar Senha</mat-label>
-            <input type="password" formControlName="confirmPassword" matInput autocomplete="current-password" [errorStateMatcher]="matcher">
+            <input type="password" formControlName="confirmPassword" matInput autocomplete="current-password"
+                [errorStateMatcher]="matcher">
         </mat-form-field>
-        <div class="buttons">
-            <button class="sign-up" matFab extended (click)="onSubmit()">
-                Cadastrar
-            </button>
-        </div>
+        <app-button (onClick)="onSubmit()">Cadastrar</app-button>
     </form>
 </section>

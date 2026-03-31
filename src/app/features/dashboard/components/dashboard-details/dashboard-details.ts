@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, signal, Signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { TransactionService } from '../../../transactions/services/transaction-service';
@@ -7,10 +7,13 @@ import { ITransactions } from '../../../transactions/models/ITransactions';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Header } from '../../../../core/layout/header/header';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
+import { MatInput } from "@angular/material/input";
+import { CdkTextareaAutosize } from "@angular/cdk/text-field";
+import { Button } from '../../../../shared/components/button/button';
 
 @Component({
   selector: 'app-dashboard-details',
-  imports: [MatButtonModule, MatIconModule, CurrencyPipe, DatePipe, Header, LoadingSpinner],
+  imports: [MatButtonModule, MatIconModule, CurrencyPipe, DatePipe, Header, LoadingSpinner, MatInput, CdkTextareaAutosize, Button],
   templateUrl: './dashboard-details.html',
   styleUrl: './dashboard-details.scss',
 })

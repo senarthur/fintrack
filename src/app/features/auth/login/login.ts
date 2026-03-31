@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth-service';
 import { LoginRequest } from '../../../core/model/auth.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Button } from '../../../shared/components/button/button';
 
 
 @Component({
@@ -19,7 +20,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatIconModule,
     ɵInternalFormsSharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Button
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
