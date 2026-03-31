@@ -6,8 +6,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { TransactionService } from "../../../transactions/services/transaction-service"
 
@@ -50,16 +50,16 @@ export class DashboardAddForm {
   }
 
   onSubmit(stepper: MatStepperModule) {
-    if(this.firstFormGroup.invalid || this.secondFormGroup.invalid ||
+    if (this.firstFormGroup.invalid || this.secondFormGroup.invalid ||
       this.thirdFormGroup.invalid || this.fourthFormGroup.invalid) {
-        this._snackBar.open('Por favor, preencha todos os campos obrigatórios.', 'Fechar')
-        return;
-      }
-      
-      const transactionType = this.fourthFormGroup.value.fourthCtrl == "EXPENSE" ? 1 : 0;
-      
-      const newTransaction = {
-      amount: Number(this.firstFormGroup.value.firstCtrl), 
+      this._snackBar.open('Por favor, preencha todos os campos obrigatórios.', 'Fechar')
+      return;
+    }
+
+    const transactionType = this.fourthFormGroup.value.fourthCtrl == "EXPENSE" ? 1 : 0;
+
+    const newTransaction = {
+      amount: Number(this.firstFormGroup.value.firstCtrl),
       title: this.secondFormGroup.value.secondCtrl,
       description: this.thirdFormGroup.value.thirdCtrl,
       transactionType: transactionType

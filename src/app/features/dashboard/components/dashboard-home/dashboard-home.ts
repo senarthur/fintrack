@@ -1,17 +1,17 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { TransactionService } from '../../../transactions/services/transaction-service';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { RouterLink } from "@angular/router";
 import { CurrencyPipe } from '@angular/common';
 import { Header } from '../../../../core/layout/header/header';
 import { ITransactions } from '../../../transactions/models/ITransactions';
 import { IGroupedTransactions } from '../../../transactions/models/IGroupedTransactions';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
+import { Card } from '../../../../shared/components/card/card';
 
 @Component({
   selector: 'app-dashboard-home',
-  imports: [MatChipsModule, RouterLink, CurrencyPipe, Header, MatProgressSpinnerModule],
+  imports: [MatChipsModule, CurrencyPipe, Header, LoadingSpinner, Card],
   templateUrl: './dashboard-home.html',
   styleUrl: './dashboard-home.scss',
 })
@@ -87,7 +87,10 @@ export class DashboardHome {
 
   onScroll($event: any) {
     const element = $event.target;
-    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+    const currentScroll = Math.ceil(element.scrollTop + element.clientHeight);
+    const threshold = element.scrollHeight - 100; 
+    
+    if (currentScroll >= threshold) {
       if (this.transactions().length < this.totalElements() && !this.loading()) {
         this.page.update(current => current + 1);
         this.loadTransactions();

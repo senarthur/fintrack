@@ -22,28 +22,12 @@
                 </div>
 
                 @for (transaction of group.transactions; track $index) {
-                    <div class="title-container" routerLink="/details/{{transaction.id}}">
-                        <div class="card">
-                            <div class="icon">
-                                <p>{{ transaction.title.charAt(0) }}</p>
-                            </div>
-                            <div class="title">
-                                <h3>{{ transaction.title }}</h3>
-                                <p>{{ transaction.description }}</p>
-                            </div>
-                        </div>
-                        <span class="{{ transaction.transactionType === 'REVENUE' ? 'revenues' : 'expenses' }}">
-                            {{ transaction.transactionType === 'REVENUE' ? '+' : '-' }} {{ transaction.amount.toFixed(2) | currency:
-                            'BRL'}}
-                        </span>
-                    </div>
+                    <app-card [transaction]="transaction"></app-card>
                 }
             }
 
             @if(loading()) {
-                <div class="spinner-container">
-                    <mat-spinner [diameter]="40"></mat-spinner>
-                </div>
+                <app-loading-spinner></app-loading-spinner>
             }
         } @else {
             <p class="text-center">Ainda não há transações registradas.</p>

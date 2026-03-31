@@ -19,7 +19,7 @@
 
     p {
         margin-bottom: 30px;
-        color: #A4A4A4;
+        color: var(--color-text-secondary);
     }
 
     form {
@@ -42,8 +42,8 @@
             }
 
             .sign-up {
-                @include mat.fab-overrides((container-color: #6034A6,
-                        foreground-color: #fff,
+                @include mat.fab-overrides((container-color: var(--color-primary),
+                        foreground-color: var(--color-text-primary),
                         extended-label-text-weight: 500,
                     ));
             }

@@ -6,10 +6,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ITransactions } from '../../../transactions/models/ITransactions';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Header } from '../../../../core/layout/header/header';
+import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 
 @Component({
   selector: 'app-dashboard-details',
-  imports: [MatButtonModule, MatIconModule, CurrencyPipe, DatePipe, Header],
+  imports: [MatButtonModule, MatIconModule, CurrencyPipe, DatePipe, Header, LoadingSpinner],
   templateUrl: './dashboard-details.html',
   styleUrl: './dashboard-details.scss',
 })

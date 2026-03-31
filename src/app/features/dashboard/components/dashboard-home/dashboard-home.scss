@@ -3,13 +3,9 @@
 .container {
     padding: 20px;
 
-    @include mat.progress-spinner-overrides((active-indicator-color: #6034A6,
-        ));
-
-
     .amount-overview {
         background-color: #0F0F1E;
-        color: #fff;
+        color: var(--color-text-primary);
         padding: 20px;
         text-align: center;
         margin-bottom: 20px;
@@ -17,7 +13,7 @@
         h2 {
             margin-bottom: 10px;
             font-size: 1rem;
-            color: #A4A4A4;
+            color: var(--color-text-secondary);
         }
 
         span {
@@ -29,9 +25,9 @@
     .categories {
         margin-bottom: 40px;
 
-        @include mat.chips-overrides((elevated-container-color: #6034A6,
+        @include mat.chips-overrides((elevated-container-color: var(--color-primary),
                 container-shape-radius: 50px,
-                label-text-color: #fff,
+                label-text-color: var(--color-text-primary),
                 label-text-size: 0.8rem,
                 hover-state-layer-opacity: 0.5,
                 selected-trailing-action-state-layer-color: #692ccb));
@@ -40,89 +36,26 @@
     .history {
         display: flex;
         flex-direction: column;
-        background-color: #151524;
-        padding: 20px;
+        background-color: var(--color-surface);
+        padding: 20px 0;
         border-radius: 30px;
-        max-height: 55vh;
-        overflow-y: scroll;
+        max-height: 55dvh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: contain;
 
         &::-webkit-scrollbar {
             width: 8px;
-        }
-
-        .spinner-container {
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
         }
 
         .date-group-header {
             margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
+            padding-left: 20px;
 
             span {
-                color: #A4A4A4;
-            }
-        }
-
-        .title-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            &:not(:last-child) {
-                margin-bottom: 20px;
-            }
-
-            .card {
-                display: flex;
-                gap: 15px;
-
-                .icon {
-                    width: 40px;
-                    height: 40px;
-                    background-color: #6034A6;
-                    border-radius: 10px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    p {
-                        color: #fff;
-                        font-weight: bold;
-                        margin: 0;
-                    }
-                }
-
-                .title {
-                    display: flex;
-                    flex-direction: column;
-
-                    h3 {
-                        margin: 0;
-                        font-size: 1.2rem;
-                    }
-
-                    p {
-                        color: #A4A4A4;
-                        margin-top: 5px;
-                    }
-                }
-            }
-
-            span {
-                font-size: 1.1rem;
-            }
-
-            span.revenues {
-                color: #05B47D;
-                font-weight: bold;
-            }
-
-            span.expenses {
-                color: #B4051F;
-                font-weight: bold;
+                color: var(--color-text-secondary);
             }
         }
     }

@@ -51,7 +51,7 @@ export class Login implements OnInit {
 
   onSubmit() {
     if (this.loginForm.invalid) {
-      this.snackBar.open("Verifique os dados e tente novamente", "", {
+      this.snackBar.open("Verifique os dados e tente novamente", "Fechar", {
         duration: 2000
       })
       return;

@@ -18,6 +18,25 @@ html {
   ));
 }
 
+:root {
+  --color-primary: #6034A6;
+
+  --color-background: #0F0F1E;
+  --color-surface: #151524;
+
+  --color-text-primary: #fff;
+  --color-text-secondary: #A4A4A4;
+
+  --color-success: #05B47D;
+  --color-danger: #B4051F;
+
+  @include mat.snack-bar-overrides((
+    button-color: var(--color-primary),
+    container-color: var(--color-background),
+    supporting-text-color: var(--color-text-primary),
+  ));
+}
+
 body {
   // Default the application to a light color theme. This can be changed to
   // `dark` to enable the dark color theme, or to `light dark` to defer to the
