@@ -1,4 +1,3 @@
-
 // Include theming for Angular Material with `mat.theme()`.
 // This Sass mixin will define CSS variables that are used for styling Angular Material
 // components according to the Material 3 design spec.
@@ -8,18 +7,17 @@
 
 html {
   height: 100%;
-  @include mat.theme((
-    color: (
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme((color: (primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
 }
 
 :root {
   --color-primary: #6034A6;
+  --color-primary-selected: #2d1356;
 
   --color-background: #0F0F1E;
   --color-surface: #151524;
@@ -30,11 +28,26 @@ html {
   --color-success: #05B47D;
   --color-danger: #B4051F;
 
-  @include mat.snack-bar-overrides((
-    button-color: var(--color-primary),
-    container-color: var(--color-background),
-    supporting-text-color: var(--color-text-primary),
-  ));
+  @include mat.snack-bar-overrides((button-color: var(--color-primary),
+      container-color: var(--color-background),
+      supporting-text-color: var(--color-text-primary),
+    ));
+
+  body.light-theme {
+    --color-primary: #d5bcff;
+    --color-primary-selected: #a57aee;
+    
+    --color-background: #ffffff;
+    --color-surface: #f4f6f8;
+
+    --color-text-primary: #212529;
+    --color-text-secondary: #6c757d;
+
+    @include mat.snack-bar-overrides((button-color: var(--color-primary),
+        container-color: var(--color-background),
+        supporting-text-color: var(--color-text-primary),
+      ));
+  }
 }
 
 body {
@@ -54,4 +67,5 @@ body {
   margin: 0;
   height: 100%;
 }
+
 /* You can add global styles to this file, and also import other style files */

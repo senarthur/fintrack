@@ -1,9 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { TransactionService } from '../../../features/transactions/services/transaction-service';
 import { AuthService } from '../../../features/auth/services/auth-service';
+import { ThemeService } from '../../../shared/services/theme-service';
 
 @Component({
   selector: 'app-header',
@@ -14,8 +14,10 @@ import { AuthService } from '../../../features/auth/services/auth-service';
 export class Header implements OnInit {
   private router = inject(Router);
   private authService = inject(AuthService);
+  private theme = inject(ThemeService);
   
   user_name: string = '';
+  themeIcon = computed(() => this.theme.isDarkMode() ? 'sunny' : 'bedtime');
 
   ngOnInit(): void {
     this.user_name = localStorage.getItem('name') || "";      
@@ -27,5 +29,9 @@ export class Header implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  toggleTheme() {
+    this.theme.toggleTheme();
   }
 }

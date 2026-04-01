@@ -6,7 +6,7 @@
 
 #root {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
-    background-color: #0F0F1E;
+    color: var(--color-text-primary);
+    background-color: var(--color-background);
     min-height: 100dvh;
 }

@@ -4,7 +4,7 @@
     padding: 20px;
 
     .amount-overview {
-        background-color: #0F0F1E;
+        background-color: var(--color-background);
         color: var(--color-text-primary);
         padding: 20px;
         text-align: center;
@@ -26,11 +26,15 @@
         margin-bottom: 40px;
 
         @include mat.chips-overrides((elevated-container-color: var(--color-primary),
+                elevated-selected-container-color: var(--color-primary-selected),
                 container-shape-radius: 50px,
                 label-text-color: var(--color-text-primary),
-                label-text-size: 0.8rem,
+                selected-label-text-color: var(--color-text-primary),
+                label-text-size: 0.85rem,
                 hover-state-layer-opacity: 0.5,
-                selected-trailing-action-state-layer-color: #692ccb));
+                outline-width: 0,
+                with-icon-selected-icon-color: var(--color-text-primary),
+        ));
     }
 
     .history {

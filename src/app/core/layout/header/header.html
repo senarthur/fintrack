@@ -1,11 +1,14 @@
 <header>
-    <button (click)="navigateToAddTransaction()">
+    <button (click)="navigateToAddTransaction()" aria-label="Adicionar Transação">
         <mat-icon fontIcon="add"></mat-icon>
-        <span>Adicionar Transação</span>
     </button>
     <p>Olá {{ user_name }}</p>
-    <button (click)="logout()">
-        <mat-icon fontIcon="person"></mat-icon>
-        <span>Sair</span>
-    </button>
+    <div class="buttons">
+        <button (click)="toggleTheme()" aria-label="Alternar Tema">
+            <mat-icon [fontIcon]="themeIcon()"></mat-icon>
+        </button>
+        <button (click)="logout()" aria-label="Sair">
+            <mat-icon fontIcon="logout"></mat-icon>
+        </button>
+    </div>
 </header>
