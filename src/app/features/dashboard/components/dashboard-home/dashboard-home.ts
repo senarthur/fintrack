@@ -61,8 +61,11 @@ export class DashboardHome {
 
     const now = new Date();
     const today = now.toISOString().split('T')[0];
-    const auxYesterday = new Date((now.getMonth() + 1).toString() + "/" + (now.getDate() - 1).toString() + "/" +  now.getFullYear().toString());
+    
+    const auxYesterday = new Date(now);
+    auxYesterday.setDate(auxYesterday.getDate() - 1);
 
+    console.log((now.getMonth() + 1).toString() + "/" + (now.getDate() - 1).toString() + "/" +  now.getFullYear().toString());
     const yesterday = auxYesterday.toISOString().split('T')[0];
 
     transactions.forEach(t => {
